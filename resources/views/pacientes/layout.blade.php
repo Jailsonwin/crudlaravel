@@ -30,7 +30,7 @@
         body {
             font-family: "Nunito", sans-serif;
             font-size: 0.9rem;
-            background-color: #f8fafc;
+            background-color: lightgray;
         }
     </style>
     @stack('css')
