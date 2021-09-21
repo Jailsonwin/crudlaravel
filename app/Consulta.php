@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Consulta extends Model
 {
-    
     protected $fillable = [
         'paciente_id',
         'medico_id',
@@ -14,15 +13,19 @@ class Consulta extends Model
         'hora'
     ];
 
+    /**
+     * criar uma função para estabelecer a associação (relacionamento)
+     * entre a classe 'Consulta' e a classe 'Paciente'
+    */
+    public function paciente() {
+        return $this->belongsTo(Paciente::class);
+    }
 
-    Public function medico(){
-        //Especcificar o tipo de associação
-        return $this->belongsTo(Paciente::Class);
-        }
-
-    Public function paciente(){
-        //Especcificar o tipo de associação
-        return $this->belongsTo(Paciente::Class);
-        }
-
-};
+    /**
+     * criar uma função para estabelecer a associação (relacionamento)
+     * entre a classe 'Consulta' e a classe 'Medico'
+    */
+    public function medico() {
+        return $this->belongsTo(Medico::class);
+    }
+}

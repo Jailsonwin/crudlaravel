@@ -4,11 +4,12 @@
 
 @push('css')
 <style>
-table{
-font-family: Verdana,sans-serif;
-border: 1px solid #ccc;
-margin: 20px 0;
-}
+    table{
+        font-family: Verdana,sans-serif;
+        border: 1px solid #ccc;
+        margin: 20px 0;
+    }
+
 table th{
     padding:10px;
     font-weight: normal;
@@ -60,7 +61,6 @@ table th{
                               <th align="left">{{$paciente->updated_at}}</th>
                           </tr>
                         </table>
-
                 </div>
             </div>
         </div>

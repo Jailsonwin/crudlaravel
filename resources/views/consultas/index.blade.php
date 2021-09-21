@@ -15,9 +15,9 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between w-100">
-                        <span>@lang('Listagem Consulta')</span>
+                        <span>@lang('Listagem de Consultas')</span>
                         <a href="{{ url('consultas/create') }}" class="btn-primary btn-sm">
-                            <i class="fa fa-plus"></i> @lang('Novo Consulta')
+                            <i class="fa fa-plus"></i> @lang('Nova Consulta')
                         </a>
                     </div>
                 </div>
@@ -28,12 +28,12 @@
                     </div>
                     @endif
 
-                    <table class="table table-striped"> <!-- STRIPPED DEIXA A TABELA ZEBRADA-->
+                    <table class="table table-striped">
                         <thead>
                             <tr>
                                 <td>ID</td>
-                                <td>@lang('Paciente')</td>
-                                <td>@lang('Medico')</td>
+                                <td>@lang('Nome do Paciente')</td>
+                                <td>@lang('Nome do Medico')</td>
                                 <td>@lang('Data')</td>
                                 <td>@lang('Hora')</td>
                                 <td colspan="3" class="text-center">@lang('Ações')</td>

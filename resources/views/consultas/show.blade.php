@@ -1,14 +1,15 @@
 @extends('consultas.layout')
 
-@section('title',__($consulta->nome . ': CRUD Laravel'))
+@section('title',__($consulta->id . ': CRUD Laravel'))
 
 @push('css')
 <style>
-table{
-font-family: Verdana,sans-serif;
-border: 1px solid #ccc;
-margin: 20px 0;
-}
+    table{
+        font-family: Verdana,sans-serif;
+        border: 1px solid #ccc;
+        margin: 20px 0;
+    }
+
 table th{
     padding:10px;
     font-weight: normal;
@@ -23,7 +24,7 @@ table th{
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between w-100">
-                        <span><span class="text-info">{{$consulta->nome}}</span>: (@lang('CRUD Laravel'))</span>
+                        <span><span class="text-info">{{$consulta->id}}</span>: (@lang('CRUD Laravel'))</span>
                         <a href="{{ url('consultas') }}" class="btn-info btn-sm">
                             <i class="fa fa-arrow-left"></i> @lang('Voltar')
                         </a>
@@ -44,31 +45,30 @@ table th{
                           <th align="left">{{$consulta->id}}</th>
                         </tr>
                         <tr>
-                            <th align="left"><strong>@lang('Paciente')</strong>:</th>
+                            <th align="left"><strong>@lang('Nome do Paciente')</strong>:</th>
                             <th align="left">{{$consulta->paciente_id}}</th>
                         </tr>
                         <tr>
-                            <th align="left"><strong>@lang('Medico')</strong>:</th>
+                            <th align="left"><strong>@lang('Nome do Médico')</strong>:</th>
                             <th align="left">{{$consulta->medico_id}}</th>
-                          </tr>
-                          <tr>
+                        </tr>
+                        <tr>
                             <th align="left"><strong>@lang('Data')</strong>:</th>
                             <th align="left">{{$consulta->data}}</th>
-                          </tr>
-                          <tr>
-                              <th align="left"><strong>@lang('Hora')</strong>:</th>
-                              <th align="left">{{$consulta->hora}}</th>
-                          </tr>
-                          <tr>
+                        </tr>
+                        <tr>
+                            <th align="left"><strong>@lang('Hora')</strong>:</th>
+                            <th align="left">{{$consulta->hora}}</th>
+                        </tr>
+                        <tr>
                             <th align="left"><strong>@lang('Adicionado')</strong>:</th>
                             <th align="left">{{$consulta->created_at}}</th>
-                          </tr>
-                          <tr>
-                              <th align="left"><strong>@lang('Atualizado')</strong>:</th>
-                              <th align="left">{{$consulta->updated_at}}</th>
-                          </tr>
+                        </tr>
+                        <tr>
+                            <th align="left"><strong>@lang('Atualizado')</strong>:</th>
+                            <th align="left">{{$consulta->updated_at}}</th>
+                        </tr>
                         </table>
-
                 </div>
             </div>
         </div>

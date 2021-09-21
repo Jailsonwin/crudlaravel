@@ -31,23 +31,23 @@
                     {!! Form::open(['action' =>'ConsultaController@store', 'method' => 'POST'])!!}
 
                     <div class="form-group">
-                        {!! Form::label(__('Paciente:')) !!}
-                        {!! Form::text("paciente_id", null ,["class"=>"form-control","required"=>"required"]) !!}
+                        {!! Form::label(__('Nome do Paciente:')) !!}
+                        {!! Form::select("paciente_id", $pacientes, null ,["class"=>"form-control","required"=>"required"]) !!}
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label(__('Medico:')) !!}
-                        {!! Form::text("medico_id", null ,["class"=>"form-control","required"=>"required"]) !!}
+                        {!! Form::label(__('Nome do Médico:')) !!}
+                        {!! Form::select("medico_id", $medicos, null ,["class"=>"form-control","required"=>"required"]) !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::label(__('Data:')) !!}
-                        {!! Form::date("data", null ,["class"=>"form-control","required"=>"required"]) !!}
+                        {!! Form::text("data", null ,["class"=>"form-control","required"=>"required"]) !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::label(__('Hora:')) !!}
-                        {!! Form::time("hora", null ,["class"=>"form-control","required"=>"required"]) !!}
+                        {!! Form::text("hora", null ,["class"=>"form-control","required"=>"required"]) !!}
                     </div>
 
                     <div class="well well-sm clearfix">

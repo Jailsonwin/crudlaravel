@@ -31,12 +31,12 @@
                     {!! Form::open(['action' =>'MedicoController@store', 'method' => 'POST'])!!}
 
                     <div class="form-group">
-                        {!! Form::label(__('Nome do Medico:')) !!}
+                        {!! Form::label(__('Nome do Médico:')) !!}
                         {!! Form::text("nome", null ,["class"=>"form-control","required"=>"required"]) !!}
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label(__('Crm:')) !!}
+                        {!! Form::label(__('CRM:')) !!}
                         {!! Form::text("crm", null ,["class"=>"form-control","required"=>"required"]) !!}
                     </div>
 

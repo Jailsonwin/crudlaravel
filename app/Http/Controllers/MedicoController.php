@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Medico;
 use Illuminate\Http\Request;
+use App\Medico;
 
 class MedicoController extends Controller
 {
@@ -14,11 +14,11 @@ class MedicoController extends Controller
      */
     public function index()
     {
-     // obtendo os dados de todos os medicos
-     $medicos = Medico::all();
-     // chamando a tela e enviando o objeto $medicos
-     // como parâmetro
-     return view('medicos.index', compact('medicos'));
+        // obtendo os dados de todos os Medicos
+        $medicos = Medico::all();
+        // chamando a tela e enviando o objeto $medicos
+        // como parâmetro
+        return view('medicos.index', compact('medicos'));
     }
 
     /**
@@ -28,7 +28,7 @@ class MedicoController extends Controller
      */
     public function create()
     {
-        // chamando a tela para o cadastro de medicos
+        // chamando a tela para o cadastro de Medicos
         return view ('medicos.create');
     }
 
@@ -40,22 +40,22 @@ class MedicoController extends Controller
      */
     public function store(Request $request)
     {
-      // criando regras para validação
-      $validateData = $request->validate([
-          'nome'      =>      'required|max:35',
-          'crm'       =>      'required|max:35'
-      ]);
-      // executando o método para a gravação do registro
-      $medico = Medico::create($validateData);
-      // redirecionando para a tela principal do módulo
-      // de medicos
-      return redirect('/medicos')->with('success','Dados adicionados com sucesso!');
+        // criando regras para validação
+        $validateData = $request->validate([
+            'nome'      =>      'required|max:35',
+            'crm'    =>      'required|max:35'
+        ]);
+        // executando o método para a gravação do registro
+        $medico = Medico::create($validateData);
+        // redirecionando para a tela principal do módulo
+        // de Medicos
+        return redirect('/medicos')->with('success','Dados adicionados com sucesso!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Medico  $medico
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -71,7 +71,7 @@ class MedicoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Medico  $medico
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -88,7 +88,7 @@ class MedicoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Medico  $medico
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -97,7 +97,7 @@ class MedicoController extends Controller
         // validações nos dados da requisição
         $validateData = $request->validate([
             'nome'      =>      'required|max:35',
-            'crm'       =>      'required|max:35'
+            'crm'    =>      'required|max:35'
         ]);
         // criando um objeto para receber o resultado
         // da persistência (atualização) dos dados validados 
@@ -110,7 +110,7 @@ class MedicoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Medico  $medico
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

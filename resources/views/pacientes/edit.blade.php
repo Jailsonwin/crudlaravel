@@ -37,12 +37,12 @@
 
                     <div class="form-group">
                         {!! Form::label(__('Gênero:')) !!}
-                        {!! Form::text("genero", $paciente->genero ,["id" => "genero", "class"=>"form-control mmss","required"=>"required"]) !!}
+                        {!! Form::text("genero", $paciente->genero ,["class"=>"form-control mmss","required"=>"required"]) !!}
                     </div>
 
                     <div class="well well-sm clearfix">
                         <button class="btn btn-success pull-right" title="@lang('Salvar')"
-                            type="submit">@lang('Adicionar')</button>
+                            type="submit">@lang('Alterar')</button>
                     </div>
 
                     {!! Form::close() !!}

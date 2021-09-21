@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Consulta;
 use Illuminate\Http\Request;
-
-//Importando as classes para o controller ter acesso as informações
-use App\Medico;
+use App\Consulta;
 use App\Paciente;
+use App\Medico;
 
 class ConsultaController extends Controller
 {
@@ -18,11 +16,11 @@ class ConsultaController extends Controller
      */
     public function index()
     {
-    // obtendo os dados de todos os medicos
-     $consultas = Consulta::all();
-     // chamando a tela e enviando o objeto $medicos
-     // como parâmetro
-     return view('consultas.index', compact('consultas'));
+        // obtendo os dados de todos os pacientes
+        $consultas = Consulta::all();
+        // chamando a tela e enviando o objeto $consultas
+        // como parâmetro
+        return view('consultas.index', compact('consultas'));
     }
 
     /**
@@ -32,11 +30,11 @@ class ConsultaController extends Controller
      */
     public function create()
     {
-        //Obtendo todos os pacientes
+        // obtendo todos os pacientes
         $pacientes = Paciente::pluck('nome','id');
-        //Obtendo todos os medicos
+        // obtendo todos os médicos
         $medicos = Medico::pluck('nome','id');
-        // chamando a tela para o cadastro de consultas
+        // chamando a tela para o cadastro de pacientes
         return view ('consultas.create', compact('pacientes','medicos'));
     }
 
@@ -50,22 +48,22 @@ class ConsultaController extends Controller
     {
         // criando regras para validação
         $validateData = $request->validate([
-            'paciente_id'   =>      'required|max:35',
-            'medico_id'     =>      'required|max:35',
-            'data'          =>      'required|max:35',
-            'hora'          =>      'required|max:35'
+            'paciente_id'      =>      'required|max:35',
+            'medico_id'      =>      'required|max:35',
+            'data'    =>      'required|max:35',
+            'hora'    =>      'required|max:35'
         ]);
         // executando o método para a gravação do registro
         $consulta = Consulta::create($validateData);
         // redirecionando para a tela principal do módulo
-        // de consultas
+        // de pacientes
         return redirect('/consultas')->with('success','Dados adicionados com sucesso!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Consulta  $consulta
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -81,7 +79,7 @@ class ConsultaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Consulta  $consulta
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -98,7 +96,7 @@ class ConsultaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Consulta  $consulta
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -106,10 +104,10 @@ class ConsultaController extends Controller
         // criando um objeto para testar/aplicar 
         // validações nos dados da requisição
         $validateData = $request->validate([
-            'paciente_id'   =>      'required|max:35',
-            'medico_id'     =>      'required|max:35',
-            'data'          =>      'required|max:35',
-            'hora'          =>      'required|max:35'
+            'paciente_id'      =>      'required|max:35',
+            'medico_id'      =>      'required|max:35',
+            'data'    =>      'required|max:35',
+            'hora'    =>      'required|max:35'
         ]);
         // criando um objeto para receber o resultado
         // da persistência (atualização) dos dados validados 
@@ -122,7 +120,7 @@ class ConsultaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Consulta  $consulta
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
