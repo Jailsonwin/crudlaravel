@@ -46,11 +46,11 @@ table th{
                         </tr>
                         <tr>
                             <th align="left"><strong>@lang('Nome do Paciente')</strong>:</th>
-                            <th align="left">{{$consulta->paciente_id}}</th>
+                            <th align="left">{{$consulta->paciente->nome}}</th>
                         </tr>
                         <tr>
                             <th align="left"><strong>@lang('Nome do Médico')</strong>:</th>
-                            <th align="left">{{$consulta->medico_id}}</th>
+                            <th align="left">{{$consulta->medico->nome}}</th>
                         </tr>
                         <tr>
                             <th align="left"><strong>@lang('Data')</strong>:</th>

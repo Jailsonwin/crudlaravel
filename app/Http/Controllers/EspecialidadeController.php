@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Consulta;
-use App\Paciente;
-use App\Medico;
+use App\Especialidade;
 
-class ConsultaController extends Controller
+class EspecialidadeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +14,11 @@ class ConsultaController extends Controller
      */
     public function index()
     {
-        // obtendo os dados de todos os pacientes
-        $consultas = Consulta::all();
-        // chamando a tela e enviando o objeto $consultas
+        // obtendo os dados de todos os Especialidades
+        $especialidades = Especialidade::all();
+        // chamando a tela e enviando o objeto $especialidades
         // como parâmetro
-        return view('consultas.index', compact('consultas'));
+        return view('especialidades.index', compact('especialidades'));
     }
 
     /**
@@ -30,12 +28,8 @@ class ConsultaController extends Controller
      */
     public function create()
     {
-        // obtendo todos os pacientes
-        $pacientes = Paciente::pluck('nome','id');
-        // obtendo todos os médicos
-        $medicos = Medico::pluck('nome','id');
-        // chamando a tela para o cadastro de pacientes
-        return view ('consultas.create', compact('pacientes','medicos'));
+        // chamando a tela para o cadastro de Especialidades
+        return view ('especialidades.create');
     }
 
     /**
@@ -48,16 +42,15 @@ class ConsultaController extends Controller
     {
         // criando regras para validação
         $validateData = $request->validate([
-            'paciente_id'      =>      'required|max:35',
-            'medico_id'      =>      'required|max:35',
-            'data'    =>      'required|max:35',
-            'hora'    =>      'required|max:35'
+            'nome_esp'     =>      'required|max:35',
+            'sigla_esp'    =>      'required|max:35',
+            'obs_esp'      =>      'required|max:100'
         ]);
         // executando o método para a gravação do registro
-        $consulta = Consulta::create($validateData);
+        $especialidade = Especialidade::create($validateData);
         // redirecionando para a tela principal do módulo
-        // de pacientes
-        return redirect('/consultas')->with('success','Dados adicionados com sucesso!');
+        // de Especialidades
+        return redirect('/especialidades')->with('success','Dados adicionados com sucesso!');
     }
 
     /**
@@ -70,10 +63,10 @@ class ConsultaController extends Controller
     {
         // criando um objeto para receber o resultado
         // da busca de registro/objeto específico
-        $consulta = Consulta::findOrFail($id);
+        $especialidade = Especialidade::findOrFail($id);
         // retornando a tela de visualização com o
         // objeto recuperado
-        return view('consultas.show',compact('consulta'));
+        return view('especialidades.show',compact('especialidade'));
     }
 
     /**
@@ -84,16 +77,12 @@ class ConsultaController extends Controller
      */
     public function edit($id)
     {
-        // obtendo todos os pacientes
-        $pacientes = Paciente::pluck('nome','id');
-        // obtendo todos os médicos
-        $medicos = Medico::pluck('nome','id');
         // criando um objeto para receber o resultado
         // da busca de registro/objeto específico
-        $consulta = Consulta::findOrFail($id);
+        $especialidade = Especialidade::findOrFail($id);
         // retornando a tela de edição com o
         // objeto recuperado
-        return view('consultas.edit', compact('consulta','pacientes','medicos'));
+        return view('especialidades.edit', compact('especialidade'));
     }
 
     /**
@@ -108,16 +97,15 @@ class ConsultaController extends Controller
         // criando um objeto para testar/aplicar 
         // validações nos dados da requisição
         $validateData = $request->validate([
-            'paciente_id'      =>      'required|max:35',
-            'medico_id'      =>      'required|max:35',
-            'data'    =>      'required|max:35',
-            'hora'    =>      'required|max:35'
+            'nome_esp'     =>      'required|max:35',
+            'sigla_esp'    =>      'required|max:35',
+            'obs_esp'      =>      'required|max:100'
         ]);
         // criando um objeto para receber o resultado
         // da persistência (atualização) dos dados validados 
-        Consulta::whereId($id)->update($validateData);
+        Especialidade::whereId($id)->update($validateData);
         // redirecionando para o diretório raiz (index)
-        return redirect('/consultas')->with('success', 
+        return redirect('/especialidades')->with('success', 
         'Dados atualizados com sucesso!');
     }
 
@@ -130,11 +118,11 @@ class ConsultaController extends Controller
     public function destroy($id)
     {
         // localizando o objeto que será excluído
-        $consulta = Consulta::findOrFail($id);
+        $especialidade = Especialidade::findOrFail($id);
         // realizando a exclusão
-        $consulta->delete();
+        $especialidade->delete();
         // redirecionando para o diretório raiz (index)
-        return redirect('/consultas')->with('success', 
+        return redirect('/especialidades')->with('success', 
         'Dados removidos com sucesso!');
     }
 }
