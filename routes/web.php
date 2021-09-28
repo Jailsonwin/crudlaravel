@@ -24,3 +24,9 @@ Route::resource('medicos','MedicoController');
 Route::resource('consultas','ConsultaController');
 
 Route::resource('especialidades','EspecialidadeController');
+
+Route::resource('convenios','ConvenioController');
+
+Route::resource('tipoexames','TipoexameController');
+
+Route::resource('cargos', 'CargoController');

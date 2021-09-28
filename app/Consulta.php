@@ -28,4 +28,13 @@ class Consulta extends Model
     public function medico() {
         return $this->belongsTo(Medico::class);
     }
+
+        /**
+     * criar uma função para estabelecer a associação (relacionamento)
+     * entre a classe 'Consulta' e a classe 'Convenio'
+    */
+    public function convenio() {
+        return $this->belongsTo(Convenio::class);
+    }
+
 }
